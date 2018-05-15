@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoadingHandler : MonoBehaviour
+namespace TankProto
 {
-	public void LoadScene(int sceneIndex)
+	public class SceneLoadingHandler : MonoBehaviour
 	{
-		if (sceneIndex < 0 ||
-			sceneIndex > SceneManager.sceneCountInBuildSettings - 1) return;
+		public void LoadScene(int sceneIndex)
+		{
+			if (sceneIndex < 0 ||
+			    sceneIndex > SceneManager.sceneCountInBuildSettings - 1) return;
 
-		SceneManager.LoadScene(sceneIndex);
-	}
+			SceneManager.LoadScene(sceneIndex);
+		}
 
-	public void LoadNextScene()
-	{
-		var sceneIndex = SceneManager.GetActiveScene().buildIndex;
-		if (sceneIndex >= SceneManager.sceneCountInBuildSettings - 1) return;
+		public void LoadNextScene()
+		{
+			var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+			if (sceneIndex >= SceneManager.sceneCountInBuildSettings - 1) return;
 
-		sceneIndex++;
-		SceneManager.LoadScene(sceneIndex);
+			sceneIndex++;
+			SceneManager.LoadScene(sceneIndex);
+		}
 	}
 }
