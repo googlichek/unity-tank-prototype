@@ -37,22 +37,28 @@ namespace TankProto
 			Vector3 offset = new Vector3(0, 0, deltaZ * _movementSpeed);
 
 			if (offset == Vector3.zero) return;
-
-			//Vector3 rayOrigin =
-			//	new Vector3(transform.position.x, _castHeight, transform.position.z);
-
-			//RaycastHit hitTarget;
-
-			//Ray ray =
-			//	deltaZ < 0 ?
-			//		new Ray(rayOrigin, -transform.forward) :
-			//		new Ray(rayOrigin, transform.forward);
-
-			//bool isHit =
-			//	Physics.SphereCast(ray, _sphereRadius, out hitTarget, _rayDistance, LayerMask);
-			//if (isHit && hitTarget.distance <= _rayDistance) return;
+			if (!CheckIfMovementIsPossible(deltaZ)) return;
 
 			transform.Translate(offset * Time.deltaTime);
+		}
+
+		private bool CheckIfMovementIsPossible(float deltaZ)
+		{
+			Vector3 rayOrigin =
+				new Vector3(transform.position.x, _castHeight, transform.position.z);
+
+			RaycastHit hitTarget;
+
+			Ray ray =
+				deltaZ < 0 ?
+					new Ray(rayOrigin, -transform.forward) :
+					new Ray(rayOrigin, transform.forward);
+
+			bool isHit =
+				Physics.SphereCast(ray, _sphereRadius, out hitTarget, _rayDistance, LayerMask);
+			if (isHit && hitTarget.distance <= _rayDistance) return false;
+
+			return true;
 		}
 
 		private void HandleRotation()
