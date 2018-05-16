@@ -4,7 +4,7 @@ namespace TankProto
 {
 	public class AudioHandler : MonoBehaviour
 	{
-		private AudioHandler _instance = null;
+		private static AudioHandler _instance = null;
 
 		void Awake()
 		{
