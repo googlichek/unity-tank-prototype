@@ -73,18 +73,28 @@ namespace TankProto
 		{
 			if (!_isInputEnabled) return;
 
-			if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Q))
+			if (Input.GetKeyDown(KeyCode.E))
 			{
-				_isInputEnabled = false;
-
-				Vector3 rotationVector =
-					_cylinder.transform.localRotation.eulerAngles + new Vector3(0, 0, 180);
-
-				_cylinder.transform
-					.DOLocalRotate(rotationVector, _changeDuration)
-					.SetEase(_changeEase)
-					.OnComplete(() => _isInputEnabled = true);
+				RotateCylinder(180);
 			}
+
+			if (Input.GetKeyDown(KeyCode.Q))
+			{
+				RotateCylinder(-180);
+			}
+		}
+
+		private void RotateCylinder(float value)
+		{
+			_isInputEnabled = false;
+
+			Vector3 rotationVector =
+				_cylinder.transform.localRotation.eulerAngles + new Vector3(0, 0, value);
+
+			_cylinder.transform
+				.DOLocalRotate(rotationVector, _changeDuration)
+				.SetEase(_changeEase)
+				.OnComplete(() => _isInputEnabled = true);
 		}
 	}
 }
