@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace TankProto
 {
@@ -8,6 +9,11 @@ namespace TankProto
 		[SerializeField] [Range(0, 100)] private float _movementSpeed = 0f;
 		[SerializeField] [Range(0, 100)] private float _rotationSpeed = 0f;
 
+		[Header("Arsenal Variables")]
+		[SerializeField] private GameObject _cylinder = null;
+		[SerializeField][Range(0, 1)] private float _changeDuration = 0.5f;
+		[SerializeField] private Ease _changeEase = Ease.Linear;
+
 		[Header("Obstacle Detection Variables")]
 		[SerializeField] [Range(0, 3)] private float _castHeight = 1;
 		[SerializeField] [Range(0, 10)] private float _rayDistance = 4;
@@ -15,6 +21,8 @@ namespace TankProto
 
 		private const int LayerMask =
 			1 << GlobalVariables.EnvironmentLayer | 1 << GlobalVariables.CharacterLayer;
+
+		private bool _isInputEnabled = true;
 
 		void FixedUpdate()
 		{
@@ -57,6 +65,20 @@ namespace TankProto
 
 		private void ChangeWeapon()
 		{
+			if (!_isInputEnabled) return;
+
+			if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Q))
+			{
+				_isInputEnabled = false;
+
+				Vector3 rotationVector =
+					_cylinder.transform.localRotation.eulerAngles + new Vector3(0, 0, 180);
+
+				_cylinder.transform
+					.DOLocalRotate(rotationVector, _changeDuration)
+					.SetEase(_changeEase)
+					.OnComplete(() => _isInputEnabled = true);
+			}
 		}
 	}
 }
