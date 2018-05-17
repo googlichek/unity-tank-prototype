@@ -38,7 +38,7 @@ namespace TankProto
 			if (offset == Vector3.zero) return;
 			if (!CheckIfMovementIsPossible(deltaZ))
 			{
-				ChangeDirection();
+				//ChangeDirection();
 				return;
 			}
 
@@ -53,26 +53,26 @@ namespace TankProto
 			transform.Rotate(offset);
 		}
 
-		private void ChangeDirection()
-		{
-			if (DisableMovementEvent == null) return;
+		//private void ChangeDirection()
+		//{
+		//	if (DisableMovementEvent == null) return;
 
-			DisableMovementEvent();
+		//	DisableMovementEvent();
 
-			float rotationAngle =
-				Random.Range(_minRotationRandomizer, _maxRotationRandomizer) +
-				transform.rotation.eulerAngles.y +
-				MandatoryRotationAngle;
+		//	float rotationAngle =
+		//		Random.Range(_minRotationRandomizer, _maxRotationRandomizer) +
+		//		transform.rotation.eulerAngles.y +
+		//		MandatoryRotationAngle;
 
-			Vector3 rotationVector = new Vector3(0, rotationAngle, 0);
+		//	Vector3 rotationVector = new Vector3(0, rotationAngle, 0);
 
-			transform
-				.DORotate(rotationVector, _rotationDuration)
-				.OnComplete(() =>
-				{
-					if (EnableMovementEvent != null) EnableMovementEvent();
-				});
-		}
+		//	transform
+		//		.DORotate(rotationVector, _rotationDuration)
+		//		.OnComplete(() =>
+		//		{
+		//			if (EnableMovementEvent != null) EnableMovementEvent();
+		//		});
+		//}
 
 		private bool CheckIfMovementIsPossible(float deltaZ)
 		{

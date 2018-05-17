@@ -6,7 +6,10 @@ namespace TankProto
 	{
 		void OnTriggerEnter(Collider bumpCollider)
 		{
-			Destroy(bumpCollider.gameObject);
+			Projectile projectile = bumpCollider.GetComponent<Projectile>();
+			if (projectile == null) return;
+
+			projectile.BlowUp();
 		}
 	}
 }

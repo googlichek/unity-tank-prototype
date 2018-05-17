@@ -10,6 +10,7 @@ namespace TankProto
 		[SerializeField] [Range(-180, 180)] private float _minRotationRandomizer = -120f;
 		[SerializeField] [Range(0, 3)] private float _rotationDuration = 1;
 
+		private PlayerHandler _player = null;
 		private MovementHandler _movementHandler = null;
 		private bool _canMove = true;
 
@@ -18,12 +19,16 @@ namespace TankProto
 			_movementHandler = GetComponent<MovementHandler>();
 			_movementHandler.DisableMovementEvent += DisableMovement;
 			_movementHandler.EnableMovementEvent += EnableMovement;
+
+			_player = FindObjectOfType<PlayerHandler>();
 		}
 
 		void FixedUpdate()
 		{
 			if (!_canMove) return;
+
 			_movementHandler.Move(_movementSpeed);
+			transform.LookAt(_player.transform);
 		}
 
 		private void DisableMovement()
