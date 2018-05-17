@@ -52,11 +52,6 @@ namespace TankProto
 			transform.Rotate(offset);
 		}
 
-		public void FireMovementDisablingEvent()
-		{
-			if (DisableMovementEvent != null) DisableMovementEvent();
-		}
-
 		//private void ChangeDirection()
 		//{
 		//	if (DisableMovementEvent == null) return;

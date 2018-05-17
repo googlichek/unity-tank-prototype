@@ -15,6 +15,8 @@ namespace TankProto
 
 		void Start()
 		{
+			GameData.Score = 0;
+
 			_movementHandler = GetComponent<MovementHandler>();
 
 			_weaponHandler = GetComponent<WeaponHandler>();

@@ -29,6 +29,7 @@ namespace TankProto
 					GetComponent<Projectile>().BlowUp();
 					break;
 				case MasterEntity.Player:
+					FindObjectOfType<SceneLoadingHandler>().LoadNextScene();
 					break;
 			}
 		}

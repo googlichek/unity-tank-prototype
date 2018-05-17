@@ -35,7 +35,6 @@ namespace TankProto
 				case MasterEntity.Enemy:
 					GameData.EnemiesInAction--;
 					GameData.Score += _scoreValue;
-					GetComponent<MovementHandler>().FireMovementDisablingEvent();
 					CompleteBlowUp();
 					break;
 			}
