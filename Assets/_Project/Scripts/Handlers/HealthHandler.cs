@@ -16,7 +16,17 @@ namespace TankProto
 			if (projectile == null) return;
 
 			_healthPoints -= (1 - _armor) * projectile.Damage;
-			projectile.BlowUp();
+
+			if (projectile.Master == ProjectileMaster.Enemy)
+			{
+				projectile.BlowUp();
+				if (GameData.EnemiesInAction > 1) GameData.EnemiesInAction--;
+			}
+			else
+			{
+				projectile.BlowUp();
+			}
+
 			if (_healthPoints <= 0) HandleDefeat();
 		}
 
