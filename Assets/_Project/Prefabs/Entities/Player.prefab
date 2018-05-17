@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4756522271118750}
   - component: {fileID: 33830828327778520}
   - component: {fileID: 23147349563760452}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Secondary Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4626421783665498}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Camera Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4549253209068704}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Firearms Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4088079554556418}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Projectile Start Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 4034005796134596}
   - component: {fileID: 33294844104453712}
   - component: {fileID: 23612798294960072}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Primary Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 20697847096306232}
   - component: {fileID: 124822789134645062}
   - component: {fileID: 81110210108774694}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -120,7 +120,8 @@ GameObject:
   - component: {fileID: 114378537541135300}
   - component: {fileID: 114085497043912180}
   - component: {fileID: 114862436981853242}
-  m_Layer: 9
+  - component: {fileID: 114525716949593162}
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 15
-  _rotationSpeed: 75
+  _rotationSpeed: 100
   _castHeight: 1
   _rayDistance: 2
   _sphereRadius: 0.5
@@ -394,6 +395,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8527fe74147cf4495a3e8973a60c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114525716949593162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790449520905166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb313506a5591f04dae63ae0545d2cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 250
+  _armor: 0.5
 --- !u!114 &114862436981853242
 MonoBehaviour:
   m_ObjectHideFlags: 1

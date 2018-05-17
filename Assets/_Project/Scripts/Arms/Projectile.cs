@@ -5,5 +5,10 @@ namespace TankProto
 	public class Projectile : MonoBehaviour
 	{
 		[Range(0, 100)] public int Damage = 50;
+
+		public void BlowUp()
+		{
+			Destroy(gameObject);
+		}
 	}
 }

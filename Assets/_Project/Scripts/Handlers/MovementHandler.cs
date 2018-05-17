@@ -65,7 +65,6 @@ namespace TankProto
 				MandatoryRotationAngle;
 
 			Vector3 rotationVector = new Vector3(0, rotationAngle, 0);
-			Debug.Log(rotationVector);
 
 			transform
 				.DORotate(rotationVector, _rotationDuration)
@@ -89,10 +88,7 @@ namespace TankProto
 
 			bool isHit =
 				Physics.SphereCast(ray, _sphereRadius, out hitTarget, _rayDistance, LayerMask);
-			if (isHit && hitTarget.distance <= _rayDistance)
-			{
-				return false;
-			}
+			if (isHit && hitTarget.distance <= _rayDistance) return false;
 
 			return true;
 		}
