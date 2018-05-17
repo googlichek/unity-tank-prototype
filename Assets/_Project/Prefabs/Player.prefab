@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4756522271118750}
   - component: {fileID: 33830828327778520}
   - component: {fileID: 23147349563760452}
-  - component: {fileID: 65612405226216680}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Secondary Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4626421783665498}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4549253209068704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Firearms Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +66,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4088079554556418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile Start Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +83,7 @@ GameObject:
   - component: {fileID: 4034005796134596}
   - component: {fileID: 33294844104453712}
   - component: {fileID: 23612798294960072}
-  - component: {fileID: 65123291518987198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Primary Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +101,7 @@ GameObject:
   - component: {fileID: 20697847096306232}
   - component: {fileID: 124822789134645062}
   - component: {fileID: 81110210108774694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -118,10 +116,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4554287848866270}
+  - component: {fileID: 65317143622445074}
   - component: {fileID: 114378537541135300}
   - component: {fileID: 114085497043912180}
   - component: {fileID: 114862436981853242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,26 +344,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125937074835780}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65123291518987198
+--- !u!65 &65317143622445074
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1628499384657198}
+  m_GameObject: {fileID: 1790449520905166}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65612405226216680
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1125937074835780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -392,6 +379,10 @@ MonoBehaviour:
   _castHeight: 1
   _rayDistance: 2
   _sphereRadius: 0.5
+  _autoMovementSpeed: 1
+  _maxRotationRandomizer: 120
+  _minRotationRandomizer: -120
+  _rotationDuration: 0.5
 --- !u!114 &114378537541135300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,7 +412,8 @@ MonoBehaviour:
     type: 2}
   _projectileStartPosition: {fileID: 4088079554556418}
   _launchForce: 1000
-  _projectileScale: 0.1
+  _primaryProjectileScale: 0.1
+  _secondaryProjectileScale: 0.25
   _projectileGrowthTime: 0.2
   _weaponChangeDuration: 0.5
   _primaryWeaponFireDelay: 0.25

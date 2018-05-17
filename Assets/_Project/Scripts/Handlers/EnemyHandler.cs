@@ -6,8 +6,6 @@ namespace TankProto
 	[RequireComponent(typeof(MovementHandler))]
 	public class EnemyHandler : MonoBehaviour
 	{
-		private const float MandatoryRotationAngle = 180;
-
 		[SerializeField] [Range(0, 2)] private float _movementSpeed = 1f;
 		[SerializeField] [Range(-180, 180)] private float _maxRotationRandomizer = 120f;
 		[SerializeField] [Range(-180, 180)] private float _minRotationRandomizer = -120f;
@@ -19,7 +17,8 @@ namespace TankProto
 		void Start()
 		{
 			_movementHandler = GetComponent<MovementHandler>();
-			_movementHandler.ObstacleFoundEvent += ChangeDirection;
+			_movementHandler.DisableMovementEvent += DisableMovement;
+			_movementHandler.EnableMovementEvent += EnableMovement;
 		}
 
 		void FixedUpdate()
@@ -28,21 +27,14 @@ namespace TankProto
 			_movementHandler.Move(_movementSpeed);
 		}
 
-		private void ChangeDirection()
+		private void DisableMovement()
 		{
 			_canMove = false;
+		}
 
-			float rotationAngle =
-				Random.Range(_minRotationRandomizer, _maxRotationRandomizer) +
-				transform.rotation.eulerAngles.y +
-				MandatoryRotationAngle;
-
-			Vector3 rotationVector = new Vector3(0, rotationAngle, 0);
-			Debug.Log(rotationVector);
-
-			transform
-				.DORotate(rotationVector, _rotationDuration)
-				.OnComplete(() => _canMove = true);
+		private void EnableMovement()
+		{
+			_canMove = true;
 		}
 	}
 }
