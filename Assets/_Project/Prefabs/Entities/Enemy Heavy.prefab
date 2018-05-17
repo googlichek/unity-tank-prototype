@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instance: 2
-  _healthPoints: 150
+  _healthPoints: 125
   _armor: 0.5
 --- !u!114 &114051880006763598
 MonoBehaviour:
