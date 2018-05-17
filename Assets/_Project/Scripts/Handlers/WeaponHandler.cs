@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace TankProto
 {
+	[RequireComponent(typeof(AudioSource))]
 	public class WeaponHandler : MonoBehaviour
 	{
 		public delegate void OnDisableInput();
@@ -31,12 +32,19 @@ namespace TankProto
 		[SerializeField] private Ease _changeEase = Ease.Linear;
 		[SerializeField] private Ease _scaleEase = Ease.Linear;
 
+		[Header("Sounds")]
+		[SerializeField] private AudioClip _weaponChange = null;
+		[SerializeField] private AudioClip _primaryShot = null;
+		[SerializeField] private AudioClip _secondaryShot = null;
+
+		private AudioSource _audioSource = null;
 		private ProjectileRoot _projectileRoot = null;
 
 		private Weapons _currentWeapon = Weapons.Primary;
 
 		void Start()
 		{
+			_audioSource = GetComponent<AudioSource>();
 			_projectileRoot = FindObjectOfType<ProjectileRoot>();
 		}
 
@@ -58,6 +66,8 @@ namespace TankProto
 
 		public void UpdateCurrentWeapon()
 		{
+			PlayClip(_weaponChange);
+
 			switch (_currentWeapon)
 			{
 				case Weapons.Primary:
@@ -75,6 +85,13 @@ namespace TankProto
 
 			var projectile = SpawnProjectile();
 			Launch(projectile);
+		}
+
+		private void PlayClip(AudioClip clip)
+		{
+			_audioSource.Pause();
+			_audioSource.clip = clip;
+			_audioSource.Play();
 		}
 
 		private GameObject SpawnProjectile()
@@ -96,6 +113,9 @@ namespace TankProto
 					projectile.transform
 						.DOScale(_primaryProjectileScale, _projectileGrowthTime)
 						.SetEase(_scaleEase);
+
+					PlayClip(_primaryShot);
+
 					break;
 				case Weapons.Secondary:
 					StartCoroutine(HandleFireRate(_secondaryWeaponFireDelay));
@@ -110,6 +130,9 @@ namespace TankProto
 					projectile.transform
 						.DOScale(_secondaryProjectileScale, _projectileGrowthTime)
 						.SetEase(_scaleEase);
+
+					PlayClip(_secondaryShot);
+
 					break;
 			}
 

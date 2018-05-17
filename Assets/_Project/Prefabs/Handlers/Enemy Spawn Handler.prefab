@@ -236,4 +236,4 @@ MonoBehaviour:
   - {fileID: 4324676322001296}
   _spawnRoot: {fileID: 4827444273195156}
   _enemyAmount: 10
-  _spawnDelay: 2
+  _spawnDelay: 1.5
