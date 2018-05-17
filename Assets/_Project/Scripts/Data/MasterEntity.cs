@@ -1,6 +1,6 @@
 ﻿namespace TankProto
 {
-	public enum ProjectileMaster
+	public enum MasterEntity
 	{
 		None,
 		Player,

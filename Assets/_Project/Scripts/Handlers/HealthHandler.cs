@@ -6,6 +6,7 @@ namespace TankProto
 	public class HealthHandler : MonoBehaviour
 	{
 		[Header("Health Variables")]
+		[SerializeField] private MasterEntity _instance = MasterEntity.None;
 		[SerializeField] [Range(0, 1000)] private float _healthPoints = 150;
 		[SerializeField] [Range(0, 1)] private float _armor = 0.5f;
 		[SerializeField] [Range(0, 1000)] private int _scoreValue = 100;
@@ -16,22 +17,21 @@ namespace TankProto
 			if (projectile == null) return;
 
 			_healthPoints -= (1 - _armor) * projectile.Damage;
-
-			if (projectile.Master == ProjectileMaster.Enemy)
-			{
-				projectile.BlowUp();
-				if (GameData.EnemiesInAction > 1) GameData.EnemiesInAction--;
-			}
-			else
-			{
-				projectile.BlowUp();
-			}
+			projectile.BlowUp();
 
 			if (_healthPoints <= 0) HandleDefeat();
 		}
 
 		private void HandleDefeat()
 		{
+			switch (_instance)
+			{
+				case MasterEntity.Enemy:
+					GetComponent<Projectile>().BlowUp();
+					break;
+				case MasterEntity.Player:
+					break;
+			}
 		}
 	}
 }
