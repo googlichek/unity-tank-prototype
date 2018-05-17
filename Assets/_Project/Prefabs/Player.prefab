@@ -119,6 +119,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4554287848866270}
   - component: {fileID: 114378537541135300}
+  - component: {fileID: 114085497043912180}
+  - component: {fileID: 114862436981853242}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -374,6 +376,22 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628995686541684}
   m_Enabled: 1
+--- !u!114 &114085497043912180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790449520905166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d86cbf427a0ea4782ce4cbd7a464dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 15
+  _rotationSpeed: 75
+  _castHeight: 1
+  _rayDistance: 2
+  _sphereRadius: 0.5
 --- !u!114 &114378537541135300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,25 +403,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8527fe74147cf4495a3e8973a60c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 15
-  _rotationSpeed: 50
+--- !u!114 &114862436981853242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790449520905166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e716890dee3e154cbe8c34c6df89a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _cylinder: {fileID: 1206763085432224}
   _primaryProjectile: {fileID: 1597822153463736, guid: 05cd839bd399109459f2272b9af78591,
     type: 2}
   _secondaryProjectile: {fileID: 1597822153463736, guid: 65977249d5b9af649bde498df7f4ab53,
     type: 2}
-  _projectileStartPosition: {fileID: 4088079554556418}
-  _launchForce: 500
+  _projectileStartPosition: {fileID: 4824717944437046, guid: 3085ab86d49954d48af3e8bd52fdc25f,
+    type: 2}
+  _launchForce: 1000
   _projectileScale: 0.1
   _projectileGrowthTime: 0.2
   _weaponChangeDuration: 0.5
   _primaryWeaponFireDelay: 0.25
   _secondaryWeaponFireDelay: 1
   _changeEase: 27
-  _scaleEase: 3
-  _castHeight: 1
-  _rayDistance: 2
-  _sphereRadius: 0.5
+  _scaleEase: 27
 --- !u!124 &124822789134645062
 Behaviour:
   m_ObjectHideFlags: 1

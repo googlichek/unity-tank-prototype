@@ -8,13 +8,14 @@ namespace TankProto
 		public float ObstacleRange = 20f;
 		public float Gravity = -9.8f;
 
+		private GameObject _player = null;
 		private bool _alive;
 		private bool _playerDetected;
-		private GameObject _player;
+
 
 		void Start()
 		{
-			_player = GameObject.FindGameObjectWithTag("Player");
+			_player = FindObjectOfType<PlayerHandler>().gameObject;
 			_alive = true;
 			_playerDetected = false;
 		}
