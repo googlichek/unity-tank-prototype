@@ -43,9 +43,9 @@ namespace TankProto
 			1 << GlobalVariables.EnvironmentLayer | 1 << GlobalVariables.CharacterLayer;
 
 		private ProjectileRoot _projectileRoot = null;
-
 		private Weapons _currentWeapon = Weapons.Primary;
 
+		private float _velocityOffset = 0;
 		private bool _isInputEnabled = true;
 
 		void Start()
@@ -65,6 +65,7 @@ namespace TankProto
 		{
 			float deltaZ = Input.GetAxis(GlobalVariables.VerticalAxis);
 			Vector3 offset = new Vector3(0, 0, deltaZ * _movementSpeed) * Time.deltaTime;
+			_velocityOffset = offset.z;
 
 			if (offset == Vector3.zero) return;
 			if (!CheckIfMovementIsPossible(deltaZ)) return;
@@ -194,7 +195,8 @@ namespace TankProto
 		private void Launch(GameObject projectile)
 		{
 			Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-			projectileRigidbody.AddForce(transform.forward * _launchForce);
+			projectileRigidbody
+				.AddForce((1 + _velocityOffset) * transform.forward * _launchForce);
 		}
 
 		private IEnumerator HandleFireRate(float delay)
