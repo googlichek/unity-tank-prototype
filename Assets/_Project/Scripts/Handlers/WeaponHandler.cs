@@ -35,6 +35,11 @@ namespace TankProto
 
 		private Weapons _currentWeapon = Weapons.Primary;
 
+		void Start()
+		{
+			_projectileRoot = FindObjectOfType<ProjectileRoot>();
+		}
+
 		public void RotateCylinder(float value)
 		{
 			if (DisableInputEvent != null) DisableInputEvent();
@@ -64,12 +69,12 @@ namespace TankProto
 			}
 		}
 
-		public void HandleProjectileLaunching(float velocityOffset = 0)
+		public void HandleProjectileLaunching()
 		{
 			if (DisableInputEvent != null) DisableInputEvent();
 
 			var projectile = SpawnProjectile();
-			Launch(projectile, velocityOffset);
+			Launch(projectile);
 		}
 
 		private GameObject SpawnProjectile()
@@ -107,11 +112,10 @@ namespace TankProto
 			return projectile;
 		}
 
-		private void Launch(GameObject projectile, float velocityOffset)
+		private void Launch(GameObject projectile)
 		{
 			Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-			projectileRigidbody
-				.AddForce((1 + velocityOffset) * transform.forward * _launchForce);
+			projectileRigidbody.AddForce(transform.forward * _launchForce);
 		}
 
 		private IEnumerator HandleFireRate(float delay)

@@ -419,8 +419,7 @@ MonoBehaviour:
     type: 2}
   _secondaryProjectile: {fileID: 1597822153463736, guid: 65977249d5b9af649bde498df7f4ab53,
     type: 2}
-  _projectileStartPosition: {fileID: 4824717944437046, guid: 3085ab86d49954d48af3e8bd52fdc25f,
-    type: 2}
+  _projectileStartPosition: {fileID: 4088079554556418}
   _launchForce: 1000
   _projectileScale: 0.1
   _projectileGrowthTime: 0.2

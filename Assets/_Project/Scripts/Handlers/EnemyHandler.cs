@@ -15,7 +15,7 @@ namespace TankProto
 
 		void Start()
 		{
-			_player = FindObjectOfType<PlayerHandler>().gameObject;
+			_player = FindObjectOfType<InputHandler>().gameObject;
 			_alive = true;
 			_playerDetected = false;
 		}

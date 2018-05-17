@@ -1,18 +1,14 @@
-﻿using System.Collections;
-using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TankProto
 {
 	[RequireComponent(typeof(MovementHandler))]
 	[RequireComponent(typeof(WeaponHandler))]
-	public class PlayerHandler : MonoBehaviour
+	public class InputHandler : MonoBehaviour
 	{
-
 		private MovementHandler _movementHandler = null;
 		private WeaponHandler _weaponHandler = null;
 
-		private float _velocityOffset = 0;
 		private bool _isInputEnabled = true;
 
 		void Start()
@@ -35,8 +31,6 @@ namespace TankProto
 		private void HandleMovement()
 		{
 			float deltaZ = Input.GetAxis(GlobalVariables.VerticalAxis);
-			_velocityOffset = deltaZ;
-
 			_movementHandler.Move(deltaZ);
 		}
 
@@ -69,7 +63,7 @@ namespace TankProto
 
 			if (Input.GetKey(KeyCode.X))
 			{
-				_weaponHandler.HandleProjectileLaunching(_velocityOffset);
+				_weaponHandler.HandleProjectileLaunching();
 			}
 		}
 
