@@ -2,6 +2,9 @@
 
 namespace TankProto
 {
+	/// <summary>
+	/// Handles player input.
+	/// </summary>
 	[RequireComponent(typeof(MovementHandler))]
 	[RequireComponent(typeof(WeaponHandler))]
 	public class PlayerHandler : MonoBehaviour

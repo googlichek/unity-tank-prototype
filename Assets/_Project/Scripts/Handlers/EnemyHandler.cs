@@ -2,6 +2,9 @@
 
 namespace TankProto
 {
+	/// <summary>
+	/// Handles enemy movement behaviour.
+	/// </summary>
 	[RequireComponent(typeof(MovementHandler))]
 	public class EnemyHandler : MonoBehaviour
 	{

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TankProto
 {
+	/// <summary>
+	/// Handles enemy spawning.
+	/// </summary>
 	public class EnemySpawnHandler : MonoBehaviour
 	{
 		[Header("Spawning Variables")]

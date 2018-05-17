@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace TankProto
 {
+	/// <summary>
+	/// Helps with displaying user score.
+	/// </summary>
 	public class ScoreHandler : MonoBehaviour
 	{
 		private const string DefaultText = "Score: ";

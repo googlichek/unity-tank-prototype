@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TankProto
 {
+	/// <summary>
+	/// Does damage.
+	/// </summary>
 	[RequireComponent(typeof(AudioSource))]
 	public class Projectile : MonoBehaviour
 	{

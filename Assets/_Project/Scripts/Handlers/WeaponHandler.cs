@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace TankProto
 {
+	/// <summary>
+	/// Contains methods for handling weapons in player's posession.
+	/// </summary>
 	[RequireComponent(typeof(AudioSource))]
 	public class WeaponHandler : MonoBehaviour
 	{
@@ -48,6 +51,10 @@ namespace TankProto
 			_projectileRoot = FindObjectOfType<ProjectileRoot>();
 		}
 
+		/// <summary>
+		/// Animates weapon change.
+		/// </summary>
+		/// <param name="value">Rotation value for firearms cylinder.</param>
 		public void RotateCylinder(float value)
 		{
 			if (DisableInputEvent != null) DisableInputEvent();
@@ -64,6 +71,9 @@ namespace TankProto
 				});
 		}
 
+		/// <summary>
+		/// Updates player's active weapon.
+		/// </summary>
 		public void UpdateCurrentWeapon()
 		{
 			PlayClip(_weaponChange);
@@ -79,6 +89,9 @@ namespace TankProto
 			}
 		}
 
+		/// <summary>
+		/// Creates & launches projectile.
+		/// </summary>
 		public void HandleProjectileLaunching()
 		{
 			if (DisableInputEvent != null) DisableInputEvent();

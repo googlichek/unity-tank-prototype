@@ -2,6 +2,9 @@
 
 namespace TankProto
 {
+	/// <summary>
+	/// Class for handling player/enemy health.
+	/// </summary>
 	[RequireComponent(typeof(Collider))]
 	public class HealthHandler : MonoBehaviour
 	{

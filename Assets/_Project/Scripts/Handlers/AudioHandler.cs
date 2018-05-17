@@ -2,6 +2,9 @@
 
 namespace TankProto
 {
+	/// <summary>
+	/// Handles bacground music.
+	/// </summary>
 	public class AudioHandler : MonoBehaviour
 	{
 		private static AudioHandler _instance = null;

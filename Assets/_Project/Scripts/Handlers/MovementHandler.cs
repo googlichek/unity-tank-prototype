@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TankProto
 {
+	/// <summary>
+	/// Class that contains everything you need for player/enemy movement.
+	/// </summary>
 	public class MovementHandler : MonoBehaviour
 	{
 		public delegate void OnDisableMovement();
@@ -30,6 +33,11 @@ namespace TankProto
 		private const int LayerMask =
 			1 << GlobalVariables.EnvironmentLayer | 1 << GlobalVariables.CharacterLayer;
 
+		/// <summary>
+		/// Moves entity along it's Z axis.
+		/// </summary>
+		/// <param name="deltaZ">Movement offset from player input
+		/// or enemy speed variable.</param>
 		public void Move(float deltaZ)
 		{
 			Vector3 offset = new Vector3(0, 0, deltaZ * _movementSpeed) * Time.deltaTime;
@@ -44,6 +52,10 @@ namespace TankProto
 			transform.Translate(offset);
 		}
 
+		/// <summary>
+		/// Rotates entity along it's Y axis.
+		/// </summary>
+		/// <param name="deltaY">Rotation offset from player input.</param>
 		public void Rotate(float deltaY)
 		{
 			Vector3 offset = new Vector3(0f, deltaY * _rotationSpeed, 0f) * Time.deltaTime;
