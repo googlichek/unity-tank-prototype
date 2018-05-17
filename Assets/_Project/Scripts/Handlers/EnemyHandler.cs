@@ -1,77 +1,48 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace TankProto
 {
+	[RequireComponent(typeof(MovementHandler))]
 	public class EnemyHandler : MonoBehaviour
 	{
-		public float Speed = 5f;
-		public float ObstacleRange = 20f;
-		public float Gravity = -9.8f;
+		private const float MandatoryRotationAngle = 180;
 
-		private GameObject _player = null;
-		private bool _alive;
-		private bool _playerDetected;
+		[SerializeField] [Range(0, 2)] private float _movementSpeed = 1f;
+		[SerializeField] [Range(-180, 180)] private float _maxRotationRandomizer = 120f;
+		[SerializeField] [Range(-180, 180)] private float _minRotationRandomizer = -120f;
+		[SerializeField] [Range(0, 3)] private float _rotationDuration = 1;
 
+		private MovementHandler _movementHandler = null;
+		private bool _canMove = true;
 
 		void Start()
 		{
-			_player = FindObjectOfType<InputHandler>().gameObject;
-			_alive = true;
-			_playerDetected = false;
+			_movementHandler = GetComponent<MovementHandler>();
+			_movementHandler.ObstacleFoundEvent += ChangeDirection;
 		}
 
-		void Update()
+		void FixedUpdate()
 		{
-			if (_alive)
-			{
-				MoveUnit();
-			}
+			if (!_canMove) return;
+			_movementHandler.Move(_movementSpeed);
 		}
 
-		public void SetAlive(bool alive)
+		private void ChangeDirection()
 		{
-			_alive = alive;
-		}
+			_canMove = false;
 
-		private void MoveUnit()
-		{
-			if (transform.position.y <= 0.6f && transform.position.y >= 0f)
-			{
-				transform.Translate(0, 0, Speed * Time.deltaTime);
-			}
-			else
-			{
-				transform.Translate(0, Gravity * Time.deltaTime, Speed * Time.deltaTime);
-			}
+			float rotationAngle =
+				Random.Range(_minRotationRandomizer, _maxRotationRandomizer) +
+				transform.rotation.eulerAngles.y +
+				MandatoryRotationAngle;
 
-			// Casts ray to detect obstacles within 20 world units by default.
-			Ray forwardRay = new Ray(transform.position, transform.forward);
-			RaycastHit hit;
+			Vector3 rotationVector = new Vector3(0, rotationAngle, 0);
+			Debug.Log(rotationVector);
 
-			if (Physics.SphereCast(forwardRay, 0.75f, out hit))
-			{
-				if (_player == null)
-				{
-					_playerDetected = false;
-				}
-				else if (_playerDetected)
-				{
-					transform.LookAt(
-						new Vector3(
-							_player.transform.position.x,
-							transform.position.y,
-							_player.transform.position.z));
-				}
-				else if (hit.transform.position == _player.transform.position)
-				{
-					_playerDetected = true;
-				}
-				else if (hit.distance < ObstacleRange)
-				{
-					float angle = Random.Range(-120, 120);
-					transform.Rotate(0, angle, 0);
-				}
-			}
+			transform
+				.DORotate(rotationVector, _rotationDuration)
+				.OnComplete(() => _canMove = true);
 		}
 	}
 }

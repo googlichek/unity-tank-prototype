@@ -4,6 +4,9 @@ namespace TankProto
 {
 	public class MovementHandler : MonoBehaviour
 	{
+		public delegate void OnObstacleFound();
+		public event OnObstacleFound ObstacleFoundEvent;
+
 		[Header("Movement Variables")]
 		[SerializeField] [Range(0, 100)] private float _movementSpeed = 0f;
 		[SerializeField] [Range(0, 100)] private float _rotationSpeed = 0f;
@@ -48,7 +51,11 @@ namespace TankProto
 
 			bool isHit =
 				Physics.SphereCast(ray, _sphereRadius, out hitTarget, _rayDistance, LayerMask);
-			if (isHit && hitTarget.distance <= _rayDistance) return false;
+			if (isHit && hitTarget.distance <= _rayDistance)
+			{
+				if (ObstacleFoundEvent != null) ObstacleFoundEvent();
+				return false;
+			}
 
 			return true;
 		}

@@ -13,9 +13,9 @@ namespace TankProto
 
 		void Start()
 		{
-			_movementHandler = FindObjectOfType<MovementHandler>();
+			_movementHandler = GetComponent<MovementHandler>();
 
-			_weaponHandler = FindObjectOfType<WeaponHandler>();
+			_weaponHandler = GetComponent<WeaponHandler>();
 			_weaponHandler.DisableInputEvent += DisableInput;
 			_weaponHandler.EnableInputEvent += EnableInput;
 		}
