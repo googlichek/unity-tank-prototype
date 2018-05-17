@@ -17,26 +17,25 @@ namespace TankProto
 		[SerializeField] [Range(0, 1000)] private int _scoreValue = 100;
 
 		private AudioSource _audioSource = null;
-		private Rigidbody _rigidbody = null;
 
 		void OnEnable()
 		{
 			_audioSource = GetComponent<AudioSource>();
-			_rigidbody = GetComponent<Rigidbody>();
 		}
 
-		public void BlowUp()
+		public void HandleBlowUp()
 		{
 			_audioSource.Play();
 
 			switch (MasterEntity)
 			{
 				case MasterEntity.Player:
-					_rigidbody.velocity = Vector3.zero;
+					GetComponent<Rigidbody>().velocity = Vector3.zero;
 					CompleteBlowUp();
 					break;
 				case MasterEntity.Enemy:
 					GameData.EnemiesInAction--;
+					GetComponent<MovementHandler>().enabled = false;
 					GameData.Score += _scoreValue;
 					CompleteBlowUp();
 					break;

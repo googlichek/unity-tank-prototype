@@ -19,7 +19,7 @@ namespace TankProto
 			if (projectile == null) return;
 
 			_healthPoints -= (1 - _armor) * projectile.Damage;
-			projectile.BlowUp();
+			projectile.HandleBlowUp();
 
 			if (_healthPoints <= 0) HandleDefeat();
 		}
@@ -29,7 +29,7 @@ namespace TankProto
 			switch (_instance)
 			{
 				case MasterEntity.Enemy:
-					GetComponent<Projectile>().BlowUp();
+					GetComponent<Projectile>().HandleBlowUp();
 					break;
 				case MasterEntity.Player:
 					FindObjectOfType<SceneLoadingHandler>().LoadNextScene();

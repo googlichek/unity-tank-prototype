@@ -12,7 +12,7 @@ namespace TankProto
 			Projectile projectile = bumpCollider.GetComponent<Projectile>();
 			if (projectile == null) return;
 
-			projectile.BlowUp();
+			projectile.HandleBlowUp();
 		}
 	}
 }
