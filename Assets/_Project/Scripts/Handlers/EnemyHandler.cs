@@ -6,9 +6,6 @@ namespace TankProto
 	public class EnemyHandler : MonoBehaviour
 	{
 		[SerializeField] [Range(0, 2)] private float _movementSpeed = 1f;
-		[SerializeField] [Range(-180, 180)] private float _maxRotationRandomizer = 120f;
-		[SerializeField] [Range(-180, 180)] private float _minRotationRandomizer = -120f;
-		[SerializeField] [Range(0, 3)] private float _rotationDuration = 1;
 
 		private PlayerHandler _player = null;
 		private MovementHandler _movementHandler = null;

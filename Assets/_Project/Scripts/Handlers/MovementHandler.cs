@@ -11,7 +11,7 @@ namespace TankProto
 		public delegate void OnEnableMovement();
 		public event OnEnableMovement EnableMovementEvent;
 
-		private const float MandatoryRotationAngle = 180;
+		//private const float MandatoryRotationAngle = 180;
 
 		[Header("Movement Variables")]
 		[SerializeField] [Range(0, 100)] private float _movementSpeed = 0f;
@@ -22,11 +22,10 @@ namespace TankProto
 		[SerializeField] [Range(0, 10)] private float _rayDistance = 4;
 		[SerializeField] [Range(0, 1)] private float _sphereRadius = 0.5f;
 
-		[Header("Direction Change Variables")]
-		[SerializeField] [Range(0, 2)] private float _autoMovementSpeed = 1f;
-		[SerializeField] [Range(-180, 180)] private float _maxRotationRandomizer = 120f;
-		[SerializeField] [Range(-180, 180)] private float _minRotationRandomizer = -120f;
-		[SerializeField] [Range(0, 3)] private float _rotationDuration = 0.5f;
+		//[Header("Direction Change Variables")]
+		//[SerializeField] [Range(-180, 180)] private float _maxRotationRandomizer = 120f;
+		//[SerializeField] [Range(-180, 180)] private float _minRotationRandomizer = -120f;
+		//[SerializeField] [Range(0, 3)] private float _rotationDuration = 0.5f;
 
 		private const int LayerMask =
 			1 << GlobalVariables.EnvironmentLayer | 1 << GlobalVariables.CharacterLayer;

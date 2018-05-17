@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 50
+  Master: 2
 --- !u!114 &114388612563215974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthPoints: 100
   _armor: 0.25
+  _scoreValue: 100
 --- !u!114 &114554450590507708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,10 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f0b490698baf647983ab7fea126702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 1
-  _maxRotationRandomizer: 60
-  _minRotationRandomizer: -60
-  _rotationDuration: 0.5
+  _movementSpeed: 1.2
 --- !u!114 &114940429855125026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +346,3 @@ MonoBehaviour:
   _castHeight: 1
   _rayDistance: 2
   _sphereRadius: 0.5
-  _autoMovementSpeed: 1.2
-  _maxRotationRandomizer: 60
-  _minRotationRandomizer: -60
-  _rotationDuration: 0.5
