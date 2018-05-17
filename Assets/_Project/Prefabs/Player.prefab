@@ -117,7 +117,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4101870456762964}
+  - component: {fileID: 4554287848866270}
   - component: {fileID: 114378537541135300}
   m_Layer: 0
   m_Name: Player
@@ -162,10 +162,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.9, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4101870456762964}
+  m_Father: {fileID: 4554287848866270}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4101870456762964
+--- !u!4 &4549253209068704
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206763085432224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4034005796134596}
+  - {fileID: 4756522271118750}
+  m_Father: {fileID: 4554287848866270}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4554287848866270
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -181,21 +196,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4549253209068704
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1206763085432224}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4034005796134596}
-  - {fileID: 4756522271118750}
-  m_Father: {fileID: 4101870456762964}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4626421783665498
 Transform:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4001205313790650}
-  m_Father: {fileID: 4101870456762964}
+  m_Father: {fileID: 4554287848866270}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4756522271118750
@@ -393,10 +393,14 @@ MonoBehaviour:
   _secondaryProjectile: {fileID: 1597822153463736, guid: 65977249d5b9af649bde498df7f4ab53,
     type: 2}
   _projectileStartPosition: {fileID: 4088079554556418}
+  _launchForce: 500
+  _projectileScale: 0.1
+  _projectileGrowthTime: 0.2
   _weaponChangeDuration: 0.5
   _primaryWeaponFireDelay: 0.25
   _secondaryWeaponFireDelay: 1
   _changeEase: 27
+  _scaleEase: 3
   _castHeight: 1
   _rayDistance: 2
   _sphereRadius: 0.5

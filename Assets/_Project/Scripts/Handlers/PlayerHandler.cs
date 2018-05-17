@@ -22,9 +22,10 @@ namespace TankProto
 		[SerializeField] private GameObject _secondaryProjectile = null;
 		[SerializeField] private Transform _projectileStartPosition = null;
 
+		[SerializeField] [Range(0, 1000)] private int _launchForce = 500;
+
 		[SerializeField] [Range(0, 1)] private float _projectileScale = 0.1f;
 		[SerializeField] [Range(0, 1)] private float _projectileGrowthTime = 0.05f;
-		[SerializeField] [Range(0, 1)] private float _projectileTravelTime = 1f;
 
 		[SerializeField] [Range(0, 1)] private float _weaponChangeDuration = 0.5f;
 		[SerializeField] [Range(0, 2)] private float _primaryWeaponFireDelay = 0.25f;
@@ -63,12 +64,12 @@ namespace TankProto
 		private void HandleMovement()
 		{
 			float deltaZ = Input.GetAxis(GlobalVariables.VerticalAxis);
-			Vector3 offset = new Vector3(0, 0, deltaZ * _movementSpeed);
+			Vector3 offset = new Vector3(0, 0, deltaZ * _movementSpeed) * Time.deltaTime;
 
 			if (offset == Vector3.zero) return;
 			if (!CheckIfMovementIsPossible(deltaZ)) return;
 
-			transform.Translate(offset * Time.deltaTime);
+			transform.Translate(offset);
 		}
 
 		private bool CheckIfMovementIsPossible(float deltaZ)
@@ -93,9 +94,10 @@ namespace TankProto
 		private void HandleRotation()
 		{
 			float deltaY = Input.GetAxis(GlobalVariables.HorizontalAxis);
-			Vector3 offset = new Vector3(0f, deltaY * _rotationSpeed, 0f);
+			Vector3 offset = new Vector3(0f, deltaY * _rotationSpeed, 0f) * Time.deltaTime;
 
-			transform.Rotate(offset * Time.deltaTime);
+			if (offset == Vector3.zero) return;
+			transform.Rotate(offset);
 		}
 
 		private void ChangeWeapon()
@@ -145,13 +147,17 @@ namespace TankProto
 		{
 			if (!_isInputEnabled) return;
 
-			if (Input.GetKey(KeyCode.X)) Fire();
+			if (Input.GetKey(KeyCode.X))
+			{
+				_isInputEnabled = false;
+
+				var projectile = SpawnProjectile();
+				Launch(projectile);
+			}
 		}
 
-		private void Fire()
+		private GameObject SpawnProjectile()
 		{
-			_isInputEnabled = false;
-
 			GameObject projectile = null;
 
 			switch (_currentWeapon)
@@ -176,11 +182,19 @@ namespace TankProto
 					break;
 			}
 
-			if (projectile == null) return;
+			if (projectile == null) return null;
 
 			projectile.transform
 				.DOScale(_projectileScale, _projectileGrowthTime)
 				.SetEase(_scaleEase);
+
+			return projectile;
+		}
+
+		private void Launch(GameObject projectile)
+		{
+			Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
+			projectileRigidbody.AddForce(transform.forward * _launchForce);
 		}
 
 		private IEnumerator HandleFireRate(float delay)
