@@ -499,9 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instance: 1
-  _healthPoints: 250
+  _healthPoints: 500
   _armor: 0.5
-  _scoreValue: 0
 --- !u!114 &114862436981853242
 MonoBehaviour:
   m_ObjectHideFlags: 1

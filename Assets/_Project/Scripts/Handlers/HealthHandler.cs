@@ -9,7 +9,6 @@ namespace TankProto
 		[SerializeField] private MasterEntity _instance = MasterEntity.None;
 		[SerializeField] [Range(0, 1000)] private float _healthPoints = 150;
 		[SerializeField] [Range(0, 1)] private float _armor = 0.5f;
-		[SerializeField] [Range(0, 1000)] private int _scoreValue = 100;
 
 		void OnTriggerEnter(Collider bumpCollider)
 		{

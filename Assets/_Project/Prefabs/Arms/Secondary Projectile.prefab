@@ -222,5 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 100
   MasterEntity: 1
-  _blowUpDuration: 0.1
+  _blowUpDuration: 0.15
   _blowUpEase: 1
+  _scoreValue: 0

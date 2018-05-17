@@ -400,8 +400,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 50
   MasterEntity: 2
-  _blowUpDuration: 0.1
+  _blowUpDuration: 0.2
   _blowUpEase: 1
+  _scoreValue: 200
 --- !u!114 &114388612563215974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,7 +417,6 @@ MonoBehaviour:
   _instance: 2
   _healthPoints: 100
   _armor: 0
-  _scoreValue: 100
 --- !u!114 &114554450590507708
 MonoBehaviour:
   m_ObjectHideFlags: 1

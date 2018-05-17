@@ -11,6 +11,7 @@ namespace TankProto
 		public MasterEntity MasterEntity = MasterEntity.None;
 		[SerializeField] [Range(0, 1)] private float _blowUpDuration = 0.1f;
 		[SerializeField] [Range(0, 1)] private Ease _blowUpEase = Ease.Linear;
+		[SerializeField] [Range(0, 1000)] private int _scoreValue = 100;
 
 		private AudioSource _audioSource = null;
 		private Rigidbody _rigidbody = null;
@@ -33,6 +34,7 @@ namespace TankProto
 					break;
 				case MasterEntity.Enemy:
 					GameData.EnemiesInAction--;
+					GameData.Score += _scoreValue;
 					GetComponent<MovementHandler>().enabled = false;
 					CompleteBlowUp();
 					break;
