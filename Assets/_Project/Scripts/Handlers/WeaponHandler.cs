@@ -21,7 +21,8 @@ namespace TankProto
 
 		[SerializeField] [Range(0, 1000)] private int _launchForce = 500;
 
-		[SerializeField] [Range(0, 1)] private float _projectileScale = 0.1f;
+		[SerializeField] [Range(0, 1)] private float _primaryProjectileScale = 0.1f;
+		[SerializeField] [Range(0, 1)] private float _secondaryProjectileScale = 0.25f;
 		[SerializeField] [Range(0, 1)] private float _projectileGrowthTime = 0.05f;
 
 		[SerializeField] [Range(0, 1)] private float _weaponChangeDuration = 0.5f;
@@ -84,30 +85,34 @@ namespace TankProto
 			switch (_currentWeapon)
 			{
 				case Weapons.Primary:
+					StartCoroutine(HandleFireRate(_primaryWeaponFireDelay));
+
 					projectile =
 						Instantiate(
 							_primaryProjectile,
 							_projectileStartPosition.position,
 							Quaternion.identity,
 							_projectileRoot.transform);
-					StartCoroutine(HandleFireRate(_primaryWeaponFireDelay));
+
+					projectile.transform
+						.DOScale(_primaryProjectileScale, _projectileGrowthTime)
+						.SetEase(_scaleEase);
 					break;
 				case Weapons.Secondary:
+					StartCoroutine(HandleFireRate(_secondaryWeaponFireDelay));
+
 					projectile =
 						Instantiate(
 							_secondaryProjectile,
 							_projectileStartPosition.position,
 							Quaternion.identity,
 							_projectileRoot.transform);
-					StartCoroutine(HandleFireRate(_secondaryWeaponFireDelay));
+
+					projectile.transform
+						.DOScale(_secondaryProjectileScale, _projectileGrowthTime)
+						.SetEase(_scaleEase);
 					break;
 			}
-
-			if (projectile == null) return null;
-
-			projectile.transform
-				.DOScale(_projectileScale, _projectileGrowthTime)
-				.SetEase(_scaleEase);
 
 			return projectile;
 		}
