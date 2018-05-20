@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TankProto
 {
 	/// <summary>
-	/// Does damage.
+	/// Does damage to player.
 	/// </summary>
 	[RequireComponent(typeof(Collider))]
 	[RequireComponent(typeof(Rigidbody))]

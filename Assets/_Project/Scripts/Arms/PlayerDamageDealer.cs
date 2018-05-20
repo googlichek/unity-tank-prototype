@@ -3,7 +3,7 @@
 namespace TankProto
 {
 	/// <summary>
-	/// Does damage.
+	/// Does damage to enemies, so they can blow up.
 	/// </summary>
 	[RequireComponent(typeof(Collider))]
 	[RequireComponent(typeof(Rigidbody))]
