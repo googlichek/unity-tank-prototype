@@ -7,7 +7,6 @@ namespace TankProto
 	/// </summary>
 	[RequireComponent(typeof(Collider))]
 	[RequireComponent(typeof(Rigidbody))]
-	[RequireComponent(typeof(AudioSource))]
 	[RequireComponent(typeof(HealthHandler))]
 	public class PlayerDamageDealer : MonoBehaviour, IDamageDealer
 	{

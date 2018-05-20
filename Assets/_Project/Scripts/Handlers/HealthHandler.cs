@@ -11,6 +11,8 @@ namespace TankProto
 		public delegate void OnHealthZeroed();
 		public event OnHealthZeroed TriggerZeroHealthEvent;
 
+		public float HealthPoints { get { return _healthPoints; } }
+
 		[Header("Health Variables")]
 		[SerializeField] [Range(0, 1000)] private float _healthPoints = 150;
 		[SerializeField] [Range(0, 1)] private float _armor = 0.5f;
