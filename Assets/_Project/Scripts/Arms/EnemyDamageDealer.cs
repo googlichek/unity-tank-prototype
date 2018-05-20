@@ -6,6 +6,8 @@ namespace TankProto
 	/// <summary>
 	/// Does damage.
 	/// </summary>
+	[RequireComponent(typeof(Collider))]
+	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(AudioSource))]
 	[RequireComponent(typeof(HealthHandler))]
 	public class EnemyDamageDealer : MonoBehaviour, IDamageDealer

@@ -6,8 +6,9 @@ namespace TankProto
 	/// <summary>
 	/// Does damage.
 	/// </summary>
+	[RequireComponent(typeof(Collider))]
+	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(AudioSource))]
-	[RequireComponent(typeof(HealthHandler))]
 	public class Projectile : MonoBehaviour, IDamageDealer
 	{
 		public int Damage { get { return _damage; } }
@@ -18,14 +19,15 @@ namespace TankProto
 		[SerializeField] private Ease _blowUpEase = Ease.Linear;
 
 		private AudioSource _audioSource = null;
-		private HealthHandler _healthHandler = null;
 
 		void OnEnable()
 		{
 			_audioSource = GetComponent<AudioSource>();
+		}
 
-			_healthHandler = GetComponent<HealthHandler>();
-			_healthHandler.TriggerZeroHealthEvent += HandleBlowUp;
+		void OnTriggerEnter(Collider bumpCollider)
+		{
+			HandleBlowUp();
 		}
 
 		/// <summary>

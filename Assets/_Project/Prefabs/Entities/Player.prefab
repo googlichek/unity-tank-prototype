@@ -116,12 +116,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4554287848866270}
+  - component: {fileID: 54588617141836986}
   - component: {fileID: 65317143622445074}
   - component: {fileID: 82190526491866114}
   - component: {fileID: 114378537541135300}
   - component: {fileID: 114085497043912180}
   - component: {fileID: 114862436981853242}
   - component: {fileID: 114525716949593162}
+  - component: {fileID: 114710794949206544}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -346,6 +348,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125937074835780}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54588617141836986
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790449520905166}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!65 &65317143622445074
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -498,9 +515,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb313506a5591f04dae63ae0545d2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _instance: 1
   _healthPoints: 300
   _armor: 0.5
+--- !u!114 &114710794949206544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790449520905166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb2426cdc8eb6f47a47b2fd14563ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 500
 --- !u!114 &114862436981853242
 MonoBehaviour:
   m_ObjectHideFlags: 1

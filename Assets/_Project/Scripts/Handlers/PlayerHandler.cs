@@ -27,12 +27,16 @@ namespace TankProto
 			_weaponHandler.EnableInputEvent += EnableInput;
 		}
 
-		void Update()
+		void FixedUpdate()
 		{
 			HandleMovement();
 			HandleRotation();
-			ChangeWeapon();
 			HandleWeapons();
+		}
+
+		void Update()
+		{
+			ChangeWeapon();
 		}
 
 		private void HandleMovement()

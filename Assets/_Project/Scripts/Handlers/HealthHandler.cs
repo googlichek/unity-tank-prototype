@@ -17,7 +17,7 @@ namespace TankProto
 
 		void OnTriggerEnter(Collider bumpCollider)
 		{
-			IDamageDealer damageDealer = bumpCollider.GetComponent<Projectile>();
+			IDamageDealer damageDealer = bumpCollider.GetComponent<IDamageDealer>();
 			if (damageDealer == null) return;
 
 			HandleHealthPoints(damageDealer.Damage);

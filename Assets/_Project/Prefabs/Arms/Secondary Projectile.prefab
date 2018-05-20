@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54184271050342186}
   - component: {fileID: 82522902319981796}
   - component: {fileID: 114641079194162554}
-  - component: {fileID: 114469259499991464}
   m_Layer: 0
   m_Name: Secondary Projectile
   m_TagString: Untagged
@@ -97,7 +96,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -110,7 +109,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1597822153463736}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -210,19 +209,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114469259499991464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1597822153463736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb313506a5591f04dae63ae0545d2cd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthPoints: 25
-  _armor: 0
 --- !u!114 &114641079194162554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,6 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eb6062513f2a44c80f01bf40260325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
+  _damage: 100
   _blowUpDuration: 0.15
   _blowUpEase: 30

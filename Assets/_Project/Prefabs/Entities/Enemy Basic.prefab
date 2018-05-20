@@ -274,7 +274,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -398,10 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ad815de0b374347bdc58a21bcf972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 50
+  _damage: 75
+  _scoreValue: 200
   _blowUpDuration: 0.2
   _blowUpEase: 30
-  _scoreValue: 200
 --- !u!114 &114388612563215974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,7 +413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb313506a5591f04dae63ae0545d2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _instance: 2
   _healthPoints: 100
   _armor: 0
 --- !u!114 &114554450590507708
