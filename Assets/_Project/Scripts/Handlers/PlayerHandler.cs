@@ -27,7 +27,7 @@ namespace TankProto
 			_weaponHandler.EnableInputEvent += EnableInput;
 		}
 
-		void FixedUpdate()
+		void Update()
 		{
 			HandleMovement();
 			HandleRotation();

@@ -23,7 +23,7 @@ namespace TankProto
 			_player = FindObjectOfType<PlayerHandler>();
 		}
 
-		void FixedUpdate()
+		void Update()
 		{
 			if (!_canMove) return;
 
