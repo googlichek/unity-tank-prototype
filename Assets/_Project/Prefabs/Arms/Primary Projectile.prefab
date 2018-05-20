@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54039247101415086}
   - component: {fileID: 82892581949464428}
   - component: {fileID: 114814178616125840}
+  - component: {fileID: 114897605528838170}
   m_Layer: 0
   m_Name: Primary Projectile
   m_TagString: Untagged
@@ -221,7 +222,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  MasterEntity: 1
   _blowUpDuration: 0.15
-  _blowUpEase: 1
-  _scoreValue: 0
+  _blowUpEase: 30
+--- !u!114 &114897605528838170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597822153463736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb313506a5591f04dae63ae0545d2cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 25
+  _armor: 0

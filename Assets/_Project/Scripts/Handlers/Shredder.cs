@@ -9,10 +9,10 @@ namespace TankProto
 	{
 		void OnTriggerEnter(Collider bumpCollider)
 		{
-			Projectile projectile = bumpCollider.GetComponent<Projectile>();
-			if (projectile == null) return;
+			IDamageDealer damageDealer = bumpCollider.GetComponent<Projectile>();
+			if (damageDealer == null) return;
 
-			projectile.HandleBlowUp();
+			damageDealer.HandleBlowUp();
 		}
 	}
 }

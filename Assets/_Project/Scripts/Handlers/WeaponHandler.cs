@@ -90,7 +90,7 @@ namespace TankProto
 		}
 
 		/// <summary>
-		/// Creates & launches projectile.
+		/// Creates & launches damageDealer.
 		/// </summary>
 		public void HandleProjectileLaunching()
 		{

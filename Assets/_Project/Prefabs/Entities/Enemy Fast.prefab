@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114720857054691712}
   - component: {fileID: 114230337481940430}
   - component: {fileID: 114221001352218728}
+  - component: {fileID: 114743011135938414}
   m_Layer: 9
   m_Name: Enemy Fast
   m_TagString: Untagged
@@ -399,7 +400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  MasterEntity: 2
   _blowUpDuration: 0.2
   _blowUpEase: 1
   _scoreValue: 150
@@ -433,6 +433,21 @@ MonoBehaviour:
   _castHeight: 1
   _rayDistance: 2
   _sphereRadius: 0.5
+--- !u!114 &114743011135938414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562559486310948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ad815de0b374347bdc58a21bcf972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 25
+  _blowUpDuration: 0.2
+  _blowUpEase: 30
+  _scoreValue: 150
 --- !u!114 &114771672392758966
 MonoBehaviour:
   m_ObjectHideFlags: 1

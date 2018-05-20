@@ -8,33 +8,30 @@ namespace TankProto
 	[RequireComponent(typeof(Collider))]
 	public class HealthHandler : MonoBehaviour
 	{
+		public delegate void OnHealthZeroed();
+		public event OnHealthZeroed TriggerZeroHealthEvent;
+
 		[Header("Health Variables")]
-		[SerializeField] private MasterEntity _instance = MasterEntity.None;
 		[SerializeField] [Range(0, 1000)] private float _healthPoints = 150;
 		[SerializeField] [Range(0, 1)] private float _armor = 0.5f;
 
 		void OnTriggerEnter(Collider bumpCollider)
 		{
-			Projectile projectile = bumpCollider.GetComponent<Projectile>();
-			if (projectile == null) return;
+			IDamageDealer damageDealer = bumpCollider.GetComponent<Projectile>();
+			if (damageDealer == null) return;
 
-			_healthPoints -= (1 - _armor) * projectile.Damage;
-			projectile.HandleBlowUp();
+			HandleHealthPoints(damageDealer.Damage);
+		}
 
+		private void HandleHealthPoints(int damage)
+		{
+			_healthPoints -= (1 - _armor) * damage;
 			if (_healthPoints <= 0) HandleDefeat();
 		}
 
 		private void HandleDefeat()
 		{
-			switch (_instance)
-			{
-				case MasterEntity.Enemy:
-					GetComponent<Projectile>().HandleBlowUp();
-					break;
-				case MasterEntity.Player:
-					FindObjectOfType<SceneLoadingHandler>().LoadNextScene();
-					break;
-			}
+			if (TriggerZeroHealthEvent != null) TriggerZeroHealthEvent();
 		}
 	}
 }

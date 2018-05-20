@@ -8,12 +8,13 @@ namespace TankProto
 	/// </summary>
 	[RequireComponent(typeof(AudioSource))]
 	[RequireComponent(typeof(HealthHandler))]
-	public class Projectile : MonoBehaviour, IDamageDealer
+	public class EnemyDamageDealer : MonoBehaviour, IDamageDealer
 	{
 		public int Damage { get { return _damage; } }
 
-		[Header("Projectile Variables")]
+		[Header("Damage Dealer Variables")]
 		[SerializeField] [Range(0, 100)] private int _damage = 50;
+		[SerializeField] [Range(0, 1000)] private int _scoreValue = 100;
 		[SerializeField] [Range(0, 1)] private float _blowUpDuration = 0.1f;
 		[SerializeField] private Ease _blowUpEase = Ease.Linear;
 
@@ -29,7 +30,7 @@ namespace TankProto
 		}
 
 		/// <summary>
-		/// Starts chain of actions leading to projectile entity destruction.
+		/// Starts chain of actions leading to damage dealer entity destruction.
 		/// </summary>
 		public void HandleBlowUp()
 		{
@@ -41,7 +42,10 @@ namespace TankProto
 
 		private void PrepatreToBlowUp()
 		{
-			GetComponent<Rigidbody>().velocity = Vector3.zero;
+			GameData.EnemiesInAction--;
+			GameData.Score += _scoreValue;
+
+			GetComponent<MovementHandler>().enabled = false;
 		}
 
 		private void CompleteBlowUp()

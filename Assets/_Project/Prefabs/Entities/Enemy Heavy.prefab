@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114051880006763598}
   - component: {fileID: 114107496286055566}
   - component: {fileID: 114021934617335816}
-  - component: {fileID: 114326300188181702}
+  - component: {fileID: 114566858064494926}
   m_Layer: 9
   m_Name: Enemy Heavy
   m_TagString: Untagged
@@ -429,7 +429,7 @@ MonoBehaviour:
   _castHeight: 1
   _rayDistance: 2
   _sphereRadius: 0.5
---- !u!114 &114326300188181702
+--- !u!114 &114566858064494926
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -437,11 +437,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172184914480510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0eb6062513f2a44c80f01bf40260325, type: 3}
+  m_Script: {fileID: 11500000, guid: 81ad815de0b374347bdc58a21bcf972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 100
-  MasterEntity: 2
   _blowUpDuration: 0.2
-  _blowUpEase: 1
+  _blowUpEase: 30
   _scoreValue: 250
